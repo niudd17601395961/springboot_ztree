@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mr.mapper.ZtreeMapper">
+    <select id="listZtree" resultType="com.mr.model.ZtreeVO" parameterType="int">
+        SELECT * FROM  t_ztree where pid=#{pid}
+    </select>
+    <select id="listZtrees" resultType="com.mr.model.Ztree">
+        SELECT * FROM  t_ztree
+    </select>
+    <delete id="deleteZtreeById" parameterType="int">
+        DELETE  FROM t_ztree where id=#{id}
+    </delete>
+    <update id="updateZtreeById" parameterType="map">
+        update t_ztree set name=#{newName} where id=#{id}
+    </update>
+    <insert id="saveZtreeNode" parameterType="com.mr.model.Ztree" useGeneratedKeys="true"
+            keyProperty="id" keyColumn="id">
+        insert into t_ztree(name,open,pid) values (#{name},1,#{pid})
+    </insert>
+</mapper>

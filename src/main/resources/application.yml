@@ -1,0 +1,35 @@
+#配置mysql连接,jsp页面
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mr1805?characterEncoding=utf-8
+    username: root
+    password: root
+  redis:
+    host: 127.0.0.1
+    port: 6379
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+
+#rabbitmq
+  application:
+    name: spirng-boot-rabbitmq
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+#配置mybatis
+mybatis:
+  #配置xml映射路径
+  mapper-locations: classpath:com.mr.mapper/*.xml
+  #配置实体类的别名
+  type-aliases-package: com.mr.model
+  configuration:
+    #开启驼峰命名法
+    map-underscore-to-camel-case: true
+server:
+  port: 80
